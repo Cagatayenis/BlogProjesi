@@ -1,0 +1,22 @@
+﻿@model MVCBLOG_PROJE.Models.Entity.Kategori
+@{
+    ViewBag.Title = "KatForm";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="panel-body">
+    @using (Html.BeginForm("Kaydet", "Category", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(x => x.Ad)
+            @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Aciklama)
+            @Html.TextBoxFor(x => x.Aciklama,new { @class = "form-control" })
+        </div>
+        <input type="submit" class="btn btn-info" />
+        @Html.HiddenFor(x=> x.ID)
+    }
+</div>
+

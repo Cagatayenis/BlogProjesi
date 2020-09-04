@@ -1,0 +1,38 @@
+﻿@using MVCBLOG_PROJE.Models.Entity
+@model Makale
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12">
+    <section class="panel">
+        <header class="panel-heading">
+            Makale Güncelle
+        </header>
+        <div class="panel-body">
+            @using (Html.BeginForm("Update","Makale", FormMethod.Post))
+            {
+
+                <div class="form-group">
+                    @Html.DropDownList("KategoriID",null,new {@class="form-control"})
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Baslik, "Baslık")
+                    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control", @placeholder = "MakaleBaslik Giriniz." })
+                    
+                
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Icerik, "İçerik")
+                    @*<textarea class="form-control" name="Icerik">@Model.Icerik</textarea>*@
+                    @Html.TextAreaFor(x => x.Icerik,new {@class="form-control" })
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+                @Html.HiddenFor(x=>x.EklenmeTarihi)
+            }
+        </div>
+    </section>
+</div>
+
+

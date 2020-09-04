@@ -1,0 +1,31 @@
+﻿@model MVCBLOG_PROJE.Models.Entity.Makale
+@{
+    ViewBag.Title = "MakaleEkle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12">
+    <section class="panel">
+        <header class="panel-heading">
+            Makale Ekle
+        </header>
+        <div class="panel-body">
+            @using (Html.BeginForm("MakaleEkle", "Makale", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.DropDownList("KategoriID", new SelectList(ViewBag.KategoriID, "Value", "Text"), "Kategori Seçiniz", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Baslik, "Baslık")
+                    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control", @placeholder = "MakaleBaslik Giriniz." })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Icerik, "İçerik")
+                    <textarea class="form-control" name="Icerik"></textarea>
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+            }
+        </div>
+    </section>
+</div>
+

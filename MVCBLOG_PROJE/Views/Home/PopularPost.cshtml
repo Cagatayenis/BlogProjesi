@@ -1,0 +1,17 @@
+﻿@model List<MVCBLOG_PROJE.Models.Entity.Makale>
+<div class="sidebox widget">
+    <h3 class="widget-title section-title">Popular Posts</h3>
+    <ul class="post-list">
+        @foreach (var item in Model)
+        {
+            <li>
+                <div class="icon-overlay"> <a href="/Home/MakaleDetay/@item.ID"><img src="style/images/art/a1.jpg" alt="" />Resim Gelecek </a> </div>
+                <div class="meta">
+                    <h5><a href="/Home/MakaleDetay/@item.ID">@item.Baslik</a></h5>
+                    <em>@item.EklenmeTarihi <span class="comments"><a href="#">8 <i class="icon-chat-1"></i></a></span></em>
+                </div>
+            </li>
+        }
+    </ul>
+    <!-- /.post-list -->
+</div>

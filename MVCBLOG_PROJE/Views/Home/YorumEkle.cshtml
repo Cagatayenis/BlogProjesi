@@ -1,0 +1,19 @@
+﻿@model MVCBLOG_PROJE.Models.Entity.Yorum
+<div class="comment-form-wrapper">
+    <h3>Would you like to share your thoughts?</h3>
+    <p>Your email address will not be published. Required fields are marked *</p>
+    <form class="comment-form" name="form_name" action="/Makale/YorumEkle" method="post">
+        <div class="name-field">
+            <label><i class="icon-user"></i></label>
+            <input type="text" name="" title="@User.Identity.Name" />
+        </div>
+        <div class="message-field">
+            <textarea name="Icerik" id="textarea" rows="5" cols="30" title="@Model.Icerik"></textarea>
+        </div>
+        <input type="submit" value="Submit" name="submit" class="btn btn-submit" />
+        @Html.HiddenFor(x => x.MakaleID)
+        @Html.HiddenFor(x => x.YorumTarihi)
+
+    </form>
+</div>
+

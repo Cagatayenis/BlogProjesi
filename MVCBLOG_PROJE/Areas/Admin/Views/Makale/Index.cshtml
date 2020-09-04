@@ -1,0 +1,55 @@
+﻿@model List<MVCBLOG_PROJE.Models.Entity.Makale>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<header class="panel-heading">
+    Editable Table
+</header>
+<div class="panel-body">
+    <div class="adv-table editable-table ">
+        <div class="clearfix">
+            <div class="btn-group">
+                @Html.ActionLink("Yeni Makale","MakaleEkle","Makale",null,new {@class="btn btn-danger"})
+                    <i class="icon-plus"></i>
+            </div>
+            <div class="btn-group pull-right">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                    Tools <i class="icon-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="#">Print</a></li>
+                    <li><a href="#">Save as PDF</a></li>
+                    <li><a href="#">Export to Excel</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="space15"></div>
+        <table class="table table-striped table-hover table-bordered" id="editable-sample">
+            <thead>
+                <tr>
+                    <th>Makale Baslık</th>
+                    <th>Makale İçerik</th>
+                    <th>Kategori</th>
+                    <th>Eklenme Tarihi</th>
+                    <th>Güncelle</th>
+                    <th>Sil</th>
+                </tr>)
+            </thead>
+            <tbody>
+                @foreach (var makale in Model)
+                {
+                <tr class="">
+                    <td>@makale.Baslik</td>
+                    <td>@makale.Icerik</td>
+                    <td>@makale.Kategori.Ad</td>
+                    <td class="center">@makale.EklenmeTarihi</td>
+                    <td>@Html.ActionLink("Güncelle", "Update", "Makale", new { @id = makale.ID }, new { @class = "btn btn-danger" })</td>
+                    <td><a class="" href="/Makale/Sil/@makale.ID">Sil</a></td>
+                    
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model List<MVCBLOG_PROJE.Models.Entity.Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@Html.ActionLink("Kategori Ekle","Yeni","Category",null,new {@class="btn btn-success" })
+<br />
+<div class="panel-default">
+    <table class="table table-bordered">
+        <tr>
+            <th>Ad</th>
+            <th>Acaiklama</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+        <tbody>
+            @foreach(var item in Model)
+            {
+            <tr>
+                <td>@item.Ad</td>
+                <td>@item.Aciklama</td>
+                <td>@Html.ActionLink("Güncelle","Guncelle","Category",new {@id=item.ID},null)</td>
+                <td>@Html.ActionLink("Sil","Sil","Category",new {@id=item.ID},new {@class="btn btn-danger"})</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

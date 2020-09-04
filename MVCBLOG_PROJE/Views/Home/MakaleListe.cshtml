@@ -1,0 +1,71 @@
+﻿@model List<MVCBLOG_PROJE.Models.Entity.Makale>
+@{
+    ViewBag.Title = "MakaleListe";
+    Layout = "~/Views/Shared/_BlogLayout.cshtml";
+}
+
+<div class="container inner">
+    <div class="row">
+        <div class="col-sm-8 content">
+
+            <div class="blog-posts col-blog">
+                @foreach (var item in Model)
+                {
+                    <div class="post row">
+                        <div class="col-sm-4">
+                            <figure>
+                                <a href="/Home/MakaleDetay/@item.ID">
+                                    <div class="text-overlay">
+                                        <div class="info"><span>Read More</span></div>
+                                    </div>
+                                    <img src="~/Contet/style/images/art/logo.png" alt="" />Resim Gelecek
+                                </a>
+                            </figure>
+                        </div>
+                        <div class="col-sm-8 post-content">
+                            <div class="meta"><span class="date">@item.EklenmeTarihi</span><span class="comments"><a href="#">8 <i class="icon-chat-1"></i></a></span></div>
+                            <h2 class="post-title"><a href="/Home/MakaleDetay/@item.ID">@item.Baslik</a></h2>
+                            <p>
+                                @if (item.Icerik.Length > 250)
+                                {
+                                <p>@item.Icerik.Substring(0, 210)</p>
+                            }
+                                </p>
+                            </div>
+                        </div>
+                    }
+            </div>
+            <!-- /.blog-posts -->
+
+            <div class="pagination">
+                <ul>
+                    <li><a href="#" class="btn">Prev</a></li>
+                    <li class="active"><a href="#" class="btn"><span>1</span></a></li>
+                    <li><a href="#" class="btn"><span>2</span></a></li>
+                    <li><a href="#" class="btn"><span>3</span></a></li>
+                    <li><a href="#" class="btn">Next</a></li>
+                </ul>
+            </div>
+            <!-- /.pagination -->
+
+        </div>
+        <!-- /.content -->
+        <aside class="col-sm-4 sidebar lp30">
+            @{ Html.RenderAction("PopularPost"); }
+            <!-- /.widget -->
+            @{Html.RenderPartial("_ELSEWHERE");}
+            <!-- /.widget -->
+            @{ Html.RenderPartial("_arama");}
+            <!-- /.widget -->
+            @{ Html.RenderPartial("_ozelmetin");}
+            <!-- /.widget -->
+            @{Html.RenderAction("_kategoriler");}
+            <!-- /.widget -->
+            @{ Html.RenderPartial("_etiketler");}
+        </aside>
+        <!-- /.col-sm-4 .sidebar -->
+
+    </div>
+    <!-- /.row -->
+</div>
+
